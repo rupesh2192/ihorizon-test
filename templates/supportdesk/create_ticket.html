@@ -1,0 +1,33 @@
+{% include 'supportdesk/customer_header.html' %}
+
+<div class="container px-lg-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-6 px-lg-5 col-lg-8 py-5 bg-primary-alt border">
+            <h2>Request information</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.summary.errors }}
+                    {{ form.summary.label_tag }}
+                    {{ form.summary }}
+                </div>
+                <div class="form-group">
+                    {{ form.description.errors }}
+                    {{ form.description.label_tag }}
+                    {{ form.description }}
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" name="{{ form.is_high_priority.name }}" class="custom-control-input" id="{{ form.is_high_priority.auto_id }}">
+                        <label class="custom-control-label" for="{{ form.is_high_priority.id_for_label }}">
+                            {{ form.is_high_priority.label }}
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group py-3">
+                    <button type="submit" class="btn btn-primary btn-block">Create support request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container px-lg-5">
+    <div class="row py-3 mx-lg-n5">
+        <div class="col py-5 px-lg-5">
+            <img alt="ihorizon" src="{% static '/assets/img/ihorizon.png' %}" style="max-width: 50%;">
+        </div>
+        <div class="col py-5 px-lg-5 row justify-content-end">
+            <a href="{% url 'login' %}" class="m-1 btn btn-outline-danger border">
+                Logout
+            </a>
+            {% block header_right %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% include 'supportdesk/customer_header.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<div class="container px-lg-5">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h2>My requests</h2>
+            {% for object in requests %}
+            <div class="card card-body">
+                <div class="d-flex justify-content-between mb-3">
+                    <a href="#">
+                        <h4>
+                            {{ object.summary }}
+                            {% if object.is_high_priority %}
+                            <span class="btn-sm badge-pill badge-danger border">High Priority</span>
+                            {% endif %}
+                        </h4>
+                    </a>
+                    {% if object.status == 'completed' %}
+                    <span style="align-self: center;"
+                          class="badge badge-pill btn-outline-success border">{{object.status}}</span>
+                    {% else %}
+                    <span style="align-self: center;" class="badge badge-pill btn-white border">{{object.status}}</span>
+                    {% endif %}
+                </div>
+                <p class="flex-grow-1">
+                    {{ object.description }}
+                </p>
+                {% include 'supportdesk/task_details.html' %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
